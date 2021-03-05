@@ -1,39 +1,67 @@
-package com.mariten.kanatools;
-
-import com.sun.org.slf4j.internal.LoggerFactory;
-
-import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-
+import org.springframework.boot.SpringApplication;
+@ComponentScan(exclude=Book.class,scanBasePackages={"net.javabeat"})
+@SpringBootApplication
 public class ResourceLeak {
-    LoggerFactory logger = new LoggerFactory();
-    public void process() {
-        SecureRandom secureRandom = new SecureRandom();
-        try {
-            PrintWriter out = new PrintWriter("");
-            out.println("the text");
-            out.close();
-            Cipher c1 = Cipher.getInstance("DES");
-        } catch (IOException | NoSuchAlgorithmException | NoSuchPaddingException e) {
-            System.err.println();
+private int x ,y ,z,apiCount;
+		
+	 public static void main(String args[]) {  
+	     SpringApplication.run(SpringBootApplicationAndComponentScanNotBeUsedInDefaultPackage.class, args);
+	     System.out.println("Hello");  
+	    }  
+	private boolean active;
+	
+	 
+	public void setX(int val) {
+		//this is for test
+		this.y = val;
+	}
+	
+	public int getAPISize()
+	{
+	return apiCount;
+	
+	}
 
-       
+	
+	public int getY() {
+		return this.x;
+	}
 
-        }
+	
+	  public boolean isActive()
+		  {
+		    return x;
+		  }
 
-    }
-    public void process2() {
-        try {
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("out.txt", true)));
-            out.println("the text");
-        } catch (IOException e) {
-            /* logger.error("Resource is not closed anywhere.",e);*/
-        }
-    }
+	  		
+		  public void setActive(boolean b)
+		  {
+		    this.y = b;
+		  }
+		  
+		  
+		  public int getName() {	
+			  System.out.println(" ");
+			  return this.x;
+			}
+	
+
+  
+		  
+			
+		  	public void setName(int val) {
+			    System.out.println(" ");
+				this.y = val;
+			}
+		  	
+		
+			public void setZ(int val) {
+				this.z = val;
+			}
+			
+			public int getZ(int val) {
+				
+				return x;
+			}
+			
 }
